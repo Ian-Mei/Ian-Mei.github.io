@@ -1,21 +1,42 @@
 console.log("Hello World!");
-//ChangingWords();
-function ChangingWords(){
-    const element = document.getElementById("changingText");
-    const descriptions = ["fullstack developer", "data analist", "student", "hard worker","backend devloper"]
-    let message = "";
-    while(true){
-        descriptions.forEach(word => {
-            word.split("").forEach(char => { 
-                console.log("pp");
-                message += char;
-                element.innerHTML = " " + message;
-            });
-            for(let i = word.length -1; i!=0; i--){
-                message[i] = "";
-            }
-        });
+var i = 0;
+var j = 0;
+var words = [" a student", " an athlete", " a fullstack developer", " a hard worker"];
+var word = ' Lorem ipsum typing effect!'; /* The text */
+var speed = 50; /* The speed/duration of the effect in milliseconds */
+var fowards = true;
+typeWriter();
+function typeWriter() {
+    if(i == 0 ){
+        writeWord();
+    }else{
+        deleteWord();
     }
-    
-    
+}
+
+
+function deleteWord(){
+    if(document.getElementById("changingText").innerHTML != " "){
+        document.getElementById("changingText").innerHTML = document.getElementById("changingText").innerHTML.slice(0,-1);
+        setTimeout(deleteWord, Math.floor((Math.random() * 20)+45));
+    }else if(document.getElementById("changingText").innerHTML == " "){
+        i = 0;
+        if(j == words.length -1){
+            j = 0;
+        }else{
+            j++;
+        }
+        console.log(j);
+        setTimeout(typeWriter, 100);
+    }
+}
+
+function writeWord(){
+    if (i < words[j].length) {
+        document.getElementById("changingText").innerHTML += words[j].charAt(i);
+        i++;
+        setTimeout(writeWord,  Math.floor((Math.random() * 20)+45));
+    }else if(i == words[j].length){
+        setTimeout(typeWriter,1750);
+    }
 }
