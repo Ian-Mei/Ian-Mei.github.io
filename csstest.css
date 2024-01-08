@@ -174,7 +174,7 @@ p span#changingText::before {
     justify-content: space-evenly;
 
 }
-.contact .row1, .contact .row2{
+.contact .row{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -182,10 +182,12 @@ p span#changingText::before {
     height: 250px;
     padding: 25px 0px;
 }
-.contact .box{
+
+.contact .card{
     background-color: #FFFFFF30;
     display: flex;
     width: 450px;
+    height: 180px;
     border-radius: 17px 17px 17px 17px;
     padding-block-start: 20px;
     padding-block-end: 18px;
@@ -193,4 +195,62 @@ p span#changingText::before {
     padding-inline-end: 10px;
     justify-content: center;
     align-items: center;
+}
+
+.proj_row{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+.card{
+    width: 250px;
+    height: 380px;
+    position: relative;
+    margin: 1rem 0 1rem 0;
+    background-color: #50505040;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #ffffffbe;
+    transition: all 0.50s ease-in-out;
+
+}
+.card:hover{
+    box-shadow: 0 0px 7px rgb(255, 255, 255);
+    border: #fff;
+    transform: translateY(-5px) scale(1.005) translateZ(0);
+}
+.card *{
+    background-color: transparent;
+}
+.card .card-image{
+    max-width:250px;
+    max-height: 250px;
+}
+.card .card-image img{
+
+    height: 100%;
+    width: 100%;
+    transform: scale(.97);
+    border-radius: 5px;
+}
+.card .card-content{
+    max-width: 250px;
+    padding: 10px;
+    border-radius: 0 0 2px 2px;
+}
+.card .card-action{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    border-top: 1px solid rgba(160,160,160,0.2);
+    padding: 10px;
+}
+
+.header{
+    font-size: 50px;
+    text-align: center;
 }
