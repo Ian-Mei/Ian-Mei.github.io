@@ -1,11 +1,12 @@
-console.log("Hello World!");
 var i = 0;
 var j = 0;
 var words = [" a student", " an athlete", " a fullstack developer", " a hard worker"];
-var word = ' Lorem ipsum typing effect!'; /* The text */
-var speed = 50; /* The speed/duration of the effect in milliseconds */
-var fowards = true;
+var speed = 50;
+
+
 typeWriter();
+
+
 function typeWriter() {
     if(i == 0 ){
         writeWord();
@@ -26,10 +27,10 @@ function deleteWord(){
         }else{
             j++;
         }
-        console.log(j);
         setTimeout(typeWriter, 100);
     }
 }
+
 
 function writeWord(){
     if (i < words[j].length) {

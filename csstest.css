@@ -9,7 +9,7 @@
     background-color: black;
 }
 .socials{
-    position: absolute;
+    position: fixed;
     bottom: 30px;
     right: 30px;
     display: flex;
@@ -46,7 +46,7 @@ footer{
 }
 footer p{
     font-size: 15px;
-    position: absolute;
+    position: fixed;
     bottom: 0px;
 }
 header{
@@ -247,4 +247,18 @@ header{
 .header{
     font-size: 50px;
     text-align: center;
+}
+.aboutMe{
+    padding: 0px 100px;
+}
+.aboutMe h1.background{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 50px;
+    font-weight:lighter;
+    padding-left: 50px;
+    font-style: italic;
+    padding-bottom: 10px;
+    border-bottom: 4px dashed rgba(160, 160, 160, 0.651);;
 }
