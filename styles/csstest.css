@@ -227,6 +227,7 @@ header{
     max-width: 250px;
     padding: 10px;
     border-radius: 0 0 2px 2px;
+    text-align: center;
 }
 .card .card-action{
     position: absolute;
