@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="open.css" />
+    <script>
+      function openUp() {
+        const $opentop = document.querySelector("#opentop");
+        const $top = document.querySelector("#top");
+        const $front = document.querySelector("#front");
+        const $back = document.querySelector("#back");
+        const $letter = document.querySelector("#letter");
+        const $button = document.querySelector("button");
+        const $flower1 = document.querySelectorAll("#flower1");
+        const $flower2 = document.querySelectorAll("#flower2");
+        const $crown = document.querySelector("#crown");
+
+        $opentop.beginElement();
+        $top.style.zIndex = 2;
+
+        $top.classList.add("animate");
+        $front.classList.add("animate");
+        $back.classList.add("animate");
+        $button.classList.add("animate");
+        $letter.classList.add("animate");
+        $flower1.forEach(element => {
+          element.classList.add("animate");
+        });
+        $flower2.forEach(element => {
+          element.classList.add("animate");
+        });
+        $crown.classList.add("animate");
+      }
+    </script>
+  </head>
+  <body>
+    <div class="text">
+      <h1>Hey Liz! Happy anniversary! This is for you 💖</h1>
+    </div>
+    <div id="envelope">
+      <div id="back">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          height="300"
+          width="300"
+        >
+          <polygon
+            points="0,100 300,100 300,300 0,300"
+            style="fill: #4a274a; stroke: none; stroke-width: 0"
+          />
+        </svg>
+      </div>
+      <div id="front">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          height="300"
+          width="300"
+        >
+          <polygon
+            points="0,100 150,200 300,100 300,300 0,300"
+            style="fill: #ac18bc; stroke: #ffffff; stroke-width: 3"
+          />
+        </svg>
+      </div>
+      <div id="top">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          height="300"
+          width="300"
+        >
+          <polygon
+            points="0,100 150,200 300,100"
+            style="fill: #ac18bc; stroke: #ffffff; stroke-width: 2"
+          >
+            <animate
+              id="opentop"
+              attributeName="points"
+              dur="0.5s"
+              fill="freeze"
+              begin="indefinite"
+              from="0,100 150,200 300,100"
+              to="0,100 150,0 300,100"
+            />
+          </polygon>
+        </svg>
+      </div>
+
+      <div id="letter">
+        <h1>For My <span>D1 cutie patootie star</span></h1>
+        <p>
+          I know we've know each other for a while now, and have been together for more than a month
+          but I wanted to do a little something special for our one month anniversary.
+          You are so amazing, smart, cute, beautiful, and most importantly, the person 
+          that I have the most fun with. Thank you for dealing with all my shanagans 
+          and being there to support me and be such a great girlfriend. I want to be with you,
+          and I miss you so so so so much. I can't wait to see you again and give you a big hug,
+          and kiss, and just be with you. I hope that you like this little thing that I made for you,
+          and I hope that you know how much you mean to me. I hope we have a lot more facetimes, and 
+          that I will be able to see you soon. Happy anniversary Liz, I love you so much 💖
+        </p>
+      </div>
+      <button onclick="openUp()">Click Here</button>
+    </div>
+    <div class="flowers">
+      <img id = "flower1"src="https://static.vecteezy.com/system/resources/previews/012/588/179/original/colorful-flower-illustration-with-transparent-background-png.png" alt="flower" style="top: -100px;"/>
+      <img id = "flower1"src="https://static.vecteezy.com/system/resources/previews/012/588/179/original/colorful-flower-illustration-with-transparent-background-png.png" alt="flower" />
+      <img id = "flower1"src="https://static.vecteezy.com/system/resources/previews/012/588/179/original/colorful-flower-illustration-with-transparent-background-png.png" alt="flower" style="top: 100px;"/>
+      <img id = "flower2"src="https://static.vecteezy.com/system/resources/previews/012/588/179/original/colorful-flower-illustration-with-transparent-background-png.png" alt="flower" style="top: -100px;"/>
+      <img id = "flower2"src="https://static.vecteezy.com/system/resources/previews/012/588/179/original/colorful-flower-illustration-with-transparent-background-png.png" alt="flower" />
+      <img id = "flower2"src="https://static.vecteezy.com/system/resources/previews/012/588/179/original/colorful-flower-illustration-with-transparent-background-png.png" alt="flower" style="top: 100px;"/>\
+      <img id = "crown" src="https://www.pngall.com/wp-content/uploads/15/Flower-Crown-PNG-Clipart.png">
+    </div>
+  </body>
+</html>
