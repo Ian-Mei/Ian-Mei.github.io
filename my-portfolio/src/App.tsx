@@ -4,6 +4,7 @@ import AboutSection from './sections/AboutSection.tsx';
 import ContactSection from './sections/ContactSection.tsx';
 import HomeSection from './sections/HomeSection.tsx';
 import ProjectsSection from './sections/ProjectsSection.tsx';
+import TimelineSection from './sections/TimelineSection.tsx';
 import type { Project } from './types.ts';
 
 const App = () => {
@@ -156,6 +157,7 @@ const App = () => {
                 <div className="container mx-auto px-6 py-4">
                     <div className="flex items-center justify-center space-x-8">
                         <button onClick={() => scrollToSection('home')} className="text-sm font-light hover:text-orange-400 transition-colors duration-300">Home</button>
+                        <button onClick={() => scrollToSection('timeline')} className="text-sm font-light hover:text-orange-400 transition-colors duration-300">Timeline</button>
                         <button onClick={() => scrollToSection('about')} className="text-sm font-light hover:text-orange-400 transition-colors duration-300">About</button>
                         <button onClick={() => scrollToSection('projects')} className="text-sm font-light hover:text-orange-400 transition-colors duration-300">Projects</button>
                         <button onClick={() => scrollToSection('contact')} className="text-sm font-light hover:text-orange-400 transition-colors duration-300">Contact</button>
@@ -164,6 +166,7 @@ const App = () => {
             </nav>
 
             <HomeSection currentRoleIndex={currentRoleIndex} roles={roles} />
+            <TimelineSection />
             <AboutSection />
             <ProjectsSection projects={projects} />
             <ContactSection />
@@ -211,9 +214,10 @@ const App = () => {
                 </motion.a>
             </div>
 
-            <div className="fixed inset-0 pointer-events-none z-0">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-500/5 rounded-full blur-3xl" />
+            <div className="absolute inset-0 pointer-events-none z-0" aria-hidden="true">
+                <div className="absolute inset-0 bg-[radial-gradient(72rem_48rem_at_-8%_-6%,rgba(251,146,60,0.22),transparent_62%),radial-gradient(56rem_40rem_at_84%_72%,rgba(239,68,68,0.14),transparent_66%),linear-gradient(180deg,rgba(255,255,255,0.01),rgba(0,0,0,0.22))]" />
+                <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-orange-500/5 blur-3xl" />
+                <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-red-500/5 blur-3xl" />
             </div>
 
             <footer className="relative z-20 py-10 text-center text-gray-500 text-sm">&copy; 2026 Ian Mei</footer>
