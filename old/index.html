@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-681PQKNTFY"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'G-681PQKNTFY');
+	</script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ian Mei</title>
+	<link rel="icon" href="images/favicon.png" type="image/png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					fontFamily: { sans: ['Inter', 'sans-serif'] },
+					colors: {
+						brand: { red: '#f64f59', orange: '#e1940f', yellow: '#e4e12a' }
+					},
+					animation: {
+						'fade-up': 'fadeUp 0.7s ease-out forwards',
+						'fade-in': 'fadeIn 0.5s ease-out forwards',
+						'blink': 'blink 1s step-end infinite',
+					},
+					keyframes: {
+						fadeUp:  { '0%': { opacity: 0, transform: 'translateY(24px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
+						fadeIn:  { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
+						blink:   { '0%,100%': { opacity: 1 }, '50%': { opacity: 0 } },
+					}
+				}
+			}
+		}
+	</script>
+	<style>
+		body { background-color: #030303; font-family: 'Inter', sans-serif; }
+		.text-gradient {
+			background: linear-gradient(90deg, #f64f59, #e1940f, #e4e12a);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+		.glass {
+			background: rgba(255,255,255,0.05);
+			backdrop-filter: blur(16px);
+			-webkit-backdrop-filter: blur(16px);
+			border: 1px solid rgba(255,255,255,0.08);
+		}
+		.glass-hover:hover {
+			background: rgba(255,255,255,0.09);
+			border-color: rgba(255,255,255,0.15);
+		}
+		#particle-canvas {
+			position: fixed; inset: 0;
+			pointer-events: none; z-index: 0;
+		}
+		.nav-link {
+			position: relative; overflow: hidden;
+			color: rgba(255,255,255,0.5);
+			font-size: 0.875rem; letter-spacing: 0.05em;
+			padding: 0.3em 0; text-decoration: none;
+			transition: color 0.25s;
+		}
+		.nav-link::after {
+			content: '';
+			position: absolute; bottom: 0; left: 0;
+			width: 100%; height: 2px;
+			background: linear-gradient(90deg, #f64f59, #e1940f);
+			transform: scaleX(0); transform-origin: left;
+			transition: transform 0.3s ease;
+		}
+		.nav-link:hover, .nav-link.active { color: #fff; }
+		.nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+		.profile-ring {
+			background: linear-gradient(135deg, #f64f59, #e1940f, #e4e12a);
+			padding: 3px; border-radius: 50%;
+		}
+		[x-cloak] { display: none !important; }
+	</style>
+</head>
+
+<body class="text-white min-h-screen overflow-x-hidden" x-data="site()">
+
+	<!-- Particle canvas -->
+	<canvas id="particle-canvas"></canvas>
+
+	<!-- ===== NAVBAR ===== -->
+	<header class="fixed top-0 inset-x-0 z-50 flex justify-center pt-4 px-4">
+		<nav class="glass rounded-2xl px-6 py-3 flex items-center gap-8 w-full max-w-lg justify-between">
+			<span class="text-gradient font-semibold text-sm tracking-widest select-none">IM</span>
+			<ul class="flex items-center gap-6 list-none m-0 p-0">
+				<li><a href="index.html"   class="nav-link active">Home</a></li>
+				<li><a href="about.html"   class="nav-link">About</a></li>
+				<li><a href="projects.html" class="nav-link">Projects</a></li>
+				<li><a href="contact.html" class="nav-link">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- ===== HERO ===== -->
+	<main class="relative z-10 flex flex-col items-center justify-center min-h-screen pt-24 pb-16 px-4">
+
+		<!-- Profile photo -->
+		<div class="profile-ring mb-8 animate-fade-in" style="animation-delay:0.1s;opacity:0;">
+			<img id="ian" src="images/Ian.jpg" alt="Ian Mei"
+				class="rounded-full w-48 h-48 object-cover block cursor-pointer
+						transition-transform duration-300 hover:scale-105"
+				@click="profileClick">
+		</div>
+
+		<!-- Greeting -->
+		<div class="text-center space-y-3 animate-fade-up" style="animation-delay:0.25s;opacity:0;">
+			<p class="text-gradient text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
+				Hi, my name is Ian Mei.
+			</p>
+			<p class="text-gradient text-3xl sm:text-4xl md:text-5xl font-bold leading-tight flex items-center justify-center gap-2">
+				I am
+				<span id="changingText" class="inline-block min-w-[2px]"></span><span
+					class="animate-blink text-white/70">|</span>
+			</p>
+		</div>
+
+		<!-- CTA buttons -->
+		<div class="flex flex-wrap gap-4 mt-10 justify-center animate-fade-up" style="animation-delay:0.45s;opacity:0;">
+			<a href="projects.html"
+				class="px-7 py-3 rounded-full font-medium text-sm
+						bg-gradient-to-r from-brand-red via-brand-orange to-brand-yellow
+						text-black hover:opacity-90 transition-opacity shadow-lg">
+				View Projects
+			</a>
+			<a href="about.html"
+				class="px-7 py-3 rounded-full font-medium text-sm glass glass-hover
+						text-white transition-all">
+				About Me
+			</a>
+		</div>
+
+		<!-- Scroll hint -->
+		<p class="mt-16 text-white/20 text-xs tracking-widest animate-fade-in" style="animation-delay:1.2s;opacity:0;">
+			SCROLL TO EXPLORE
+		</p>
+	</main>
+
+	<!-- ===== SOCIAL ICONS (fixed bottom-right) ===== -->
+	<aside class="fixed bottom-7 right-7 z-50 flex flex-col gap-3 animate-fade-in" style="animation-delay:1s;opacity:0;">
+		<a href="https://www.linkedin.com/in/ian-mei/" target="_blank" rel="noreferrer"
+			class="glass glass-hover rounded-xl p-2 transition-all hover:scale-110 group" aria-label="LinkedIn">
+			<svg class="w-6 h-6 fill-white/70 group-hover:fill-white transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+				<path d="M 9 4 C 6.2504839 4 4 6.2504839 4 9 L 4 41 C 4 43.749516 6.2504839 46 9 46 L 41 46 C 43.749516 46 46 43.749516 46 41 L 46 9 C 46 6.2504839 43.749516 4 41 4 L 9 4 z M 9 6 L 41 6 C 42.668484 6 44 7.3315161 44 9 L 44 41 C 44 42.668484 42.668484 44 41 44 L 9 44 C 7.3315161 44 6 42.668484 6 41 L 6 9 C 6 7.3315161 7.3315161 6 9 6 z M 14 11.011719 C 12.904779 11.011719 11.919219 11.339079 11.189453 11.953125 C 10.459687 12.567171 10.011719 13.484511 10.011719 14.466797 C 10.011719 16.333977 11.631285 17.789609 13.691406 17.933594 A 0.98809878 0.98809878 0 0 0 14 17.988281 C 16.27301 17.988281 17.988281 16.396083 17.988281 14.466797 A 0.98809878 0.98809878 0 0 0 17.986328 14.414062 C 17.884577 12.513831 16.190443 11.011719 14 11.011719 z M 11 19 A 1.0001 1.0001 0 0 0 10 20 L 10 39 A 1.0001 1.0001 0 0 0 11 40 L 17 40 A 1.0001 1.0001 0 0 0 18 39 L 18 20 A 1.0001 1.0001 0 0 0 17 19 L 11 19 z M 20 19 A 1.0001 1.0001 0 0 0 19 20 L 19 39 A 1.0001 1.0001 0 0 0 20 40 L 26 40 A 1.0001 1.0001 0 0 0 27 39 L 27 29 C 27 28.170333 27.226394 27.345035 27.625 26.804688 C 28.023606 26.264339 28.526466 25.940057 29.482422 25.957031 C 30.468166 25.973981 30.989999 26.311669 31.384766 26.841797 C 31.779532 27.371924 32 28.166667 32 29 L 32 39 A 1.0001 1.0001 0 0 0 33 40 L 39 40 A 1.0001 1.0001 0 0 0 40 39 L 40 28.261719 C 40 25.300181 39.122788 22.95433 37.619141 21.367188 C 36.115493 19.780044 34.024172 19 31.8125 19 C 29.710483 19 28.110853 19.704889 27 20.423828 L 27 20 A 1.0001 1.0001 0 0 0 26 19 L 20 19 z M 12 21 L 16 21 L 16 38 L 12 38 L 12 21 z M 21 21 L 25 21 L 25 22.560547 A 1.0001 1.0001 0 0 0 26.798828 23.162109 C 26.798828 23.162109 28.369194 21 31.8125 21 C 33.565828 21 35.069366 21.582581 36.167969 22.742188 C 37.266572 23.901794 38 25.688257 38 28.261719 L 38 38 L 34 38 L 34 29 C 34 27.833333 33.720468 26.627107 32.990234 25.646484 C 32.260001 24.665862 31.031834 23.983076 29.517578 23.957031 C 27.995534 23.930001 26.747519 24.626988 26.015625 25.619141 C 25.283731 26.611293 25 27.829667 25 29 L 25 38 L 21 38 L 21 21 z"/>
+			</svg>
+		</a>
+		<a href="https://www.instagram.com/ian.meiii/" target="_blank" rel="noreferrer"
+			class="glass glass-hover rounded-xl p-2 transition-all hover:scale-110 group" aria-label="Instagram">
+			<svg class="w-6 h-6 fill-white/70 group-hover:fill-white transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+				<path d="M 16 3 C 8.8324839 3 3 8.8324839 3 16 L 3 34 C 3 41.167516 8.8324839 47 16 47 L 34 47 C 41.167516 47 47 41.167516 47 34 L 47 16 C 47 8.8324839 41.167516 3 34 3 L 16 3 z M 16 5 L 34 5 C 40.086484 5 45 9.9135161 45 16 L 45 34 C 45 40.086484 40.086484 45 34 45 L 16 45 C 9.9135161 45 5 40.086484 5 34 L 5 16 C 5 9.9135161 9.9135161 5 16 5 z M 37 11 A 2 2 0 0 0 35 13 A 2 2 0 0 0 37 15 A 2 2 0 0 0 39 13 A 2 2 0 0 0 37 11 z M 25 14 C 18.936712 14 14 18.936712 14 25 C 14 31.063288 18.936712 36 25 36 C 31.063288 36 36 31.063288 36 25 C 36 18.936712 31.063288 14 25 14 z M 25 16 C 29.982407 16 34 20.017593 34 25 C 34 29.982407 29.982407 34 25 34 C 20.017593 34 16 29.982407 16 25 C 16 20.017593 20.017593 16 25 16 z"/>
+			</svg>
+		</a>
+		<a href="https://github.com/Ian-Mei" target="_blank" rel="noreferrer"
+			class="glass glass-hover rounded-xl p-2 transition-all hover:scale-110 group" aria-label="GitHub">
+			<svg class="w-6 h-6 fill-white/70 group-hover:fill-white transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+				<path d="M 25 2 C 12.311335 2 2 12.311335 2 25 C 2 37.688665 12.311335 48 25 48 C 37.688665 48 48 37.688665 48 25 C 48 12.311335 37.688665 2 25 2 z M 25 4 C 36.607335 4 46 13.392665 46 25 C 46 34.526 40.509 42.758 32.5 46.131 L 32.5 40 C 32.5 38.015 31.5 36.268 30 35.352 C 33.5 34.553 36 31.534 36 28 C 36 26.153 35.31 24.456 34.156 23.138 C 34.559 21.948 34.993 19.636 33.984 17.969 C 33.984 17.969 32.117 17.297 29 19.418 C 27.677 19.052 26.322 18.866 25 18.866 C 23.678 18.866 22.323 19.052 21 19.418 C 17.883 17.297 16.016 17.969 16.016 17.969 C 15.007 19.636 15.441 21.948 15.844 23.138 C 14.69 24.456 14 26.153 14 28 C 14 31.534 16.5 34.553 20 35.352 C 18.5 36.268 17.5 38.015 17.5 40 L 17.5 46.131 C 9.491 42.758 4 34.526 4 25 C 4 13.392665 13.392665 4 25 4 z"/>
+			</svg>
+		</a>
+		<a href="https://www.facebook.com/ian.mei.144" target="_blank" rel="noreferrer"
+			class="glass glass-hover rounded-xl p-2 transition-all hover:scale-110 group" aria-label="Facebook">
+			<svg class="w-6 h-6 fill-white/70 group-hover:fill-white transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+				<path d="M 9 4 C 6.2504839 4 4 6.2504839 4 9 L 4 41 C 4 43.749516 6.2504839 46 9 46 L 25.832031 46 L 25.832031 30 L 22 30 L 22 23 L 25.832031 23 L 25.832031 21 C 25.832031 16.459 28.625 14 32.617188 14 C 34.529274 14 36.166016 14.142563 36.623047 14.207031 L 36.623047 19 L 34.046875 19 C 31.874845 19 31.449219 20.009745 31.449219 21.494141 L 31.449219 23 L 36.435547 23 L 35.785156 30 L 31.449219 30 L 31.449219 46 L 41 46 C 43.749516 46 46 43.749516 46 41 L 46 9 C 46 6.2504839 43.749516 4 41 4 L 9 4 z"/>
+			</svg>
+		</a>
+	</aside>
+
+	<!-- ===== FOOTER ===== -->
+	<footer class="relative z-10 flex justify-center pb-4">
+		<p class="text-white/20 text-xs">&copy; 2026 Ian Mei</p>
+	</footer>
+
+	<!-- ===== SCRIPTS ===== -->
+	<script>
+		function site() {
+			return {
+				profileClick() {
+					const el = document.getElementById('ian');
+					el.classList.add('rotate-12', 'scale-110');
+					setTimeout(() => el.classList.remove('rotate-12', 'scale-110'), 400);
+				}
+			}
+		}
+	</script>
+	<script src="scripts/typewriter.js"></script>
+	<script src="scripts/particles.js"></script>
+
+</body>
+</html>

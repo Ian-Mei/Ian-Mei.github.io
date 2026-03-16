@@ -1,31 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-681PQKNTFY"></script>
 	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-
-	gtag('config', 'G-681PQKNTFY');
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'G-681PQKNTFY');
 	</script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Ian Mei's Website</title>
+	<title>About — Ian Mei</title>
 	<link rel="icon" href="images/favicon.png" type="image/png">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="styles\csstest.css">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					fontFamily: { sans: ['Inter', 'sans-serif'] },
+					animation: { 'fade-up': 'fadeUp 0.6s ease-out forwards' },
+					keyframes: { fadeUp: { '0%': { opacity: 0, transform: 'translateY(20px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } } }
+				}
+			}
+		}
+	</script>
+	<style>
+		body { background-color: #030303; font-family: 'Inter', sans-serif; }
+		.text-gradient { background: linear-gradient(90deg,#f64f59,#e1940f,#e4e12a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+		.glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); }
+		.glass-hover:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.15); }
+		.nav-link { position:relative; overflow:hidden; color:rgba(255,255,255,0.5); font-size:0.875rem; letter-spacing:0.05em; padding:0.3em 0; text-decoration:none; transition:color 0.25s; }
+		.nav-link::after { content:''; position:absolute; bottom:0; left:0; width:100%; height:2px; background:linear-gradient(90deg,#f64f59,#e1940f); transform:scaleX(0); transform-origin:left; transition:transform 0.3s ease; }
+		.nav-link:hover,.nav-link.active { color:#fff; }
+		.nav-link:hover::after,.nav-link.active::after { transform:scaleX(1); }
+		.card-accent::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#f64f59,#e1940f,#e4e12a); border-radius:14px 14px 0 0; }
+	</style>
 </head>
 
 <body>
 	<header>
 		<ul class="menu">
-			<li class="current"><a href="index.html" data-hover="Home">Home</a></li>
-			<li><a href="about.html" data-hover="About">About</a></li>
+			<li><a href="index.html" data-hover="Home">Home</a></li>
+			<li class="current"><a href="about.html" data-hover="About">About</a></li>
 			<li><a href="projects.html" data-hover="Projects">Projects</a></li>
 			<li><a href="contact.html" data-hover="Contact">Contact</a></li>
 		</ul>
@@ -60,28 +82,119 @@
 	</div>
 
 	<main>
+		<div class="about-container">
+			<div class="about-header">
+				<h1 class="about-title">About Ian Mei</h1>
+				<p class="about-subtitle">Computer Science Student | Software Engineer | Leader</p>
+			</div>
 
-		<div class="profilepic">
-			<img id="ian" src="images\Ian.jpg">
-		</div>
-		<div class="intro">
-			<div>
-				<p class="textGradient">Hi, my name is Ian Mei.</p>
-				<p class="textGradient">I am<span class="textGradient" id="changingText"></span><span
-						class="textGradient" id="cursor">|</span></p>
+			<div class="about-intro">
+				<div class="intro-card">
+					<div class="intro-content">
+						<p>Hello! I'm Ian Mei, a junior at UMass Amherst studying Computer Science with a passion for
+							building impactful and usable software solutions. I have experience in full-stack
+							development, embedded programming, and multi-agent systems.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="about-sections">
+				<div class="section-card">
+					<div class="section-icon">💼</div>
+					<h2 class="section-title">Professional Experience</h2>
+					<div class="section-content">
+						<div class="experience-item">
+							<h3>Software Engineering Intern</h3>
+							<p class="company">North Atlantic Industries • Summer 2025</p>
+							<p>Working on translating C code to Rust, focusing on best coding practices and improving
+								memory safety.</p>
+						</div>
+						<div class="experience-item">
+							<h3>Tech Lead</h3>
+							<p class="company">UMass Learning Resource Center (LRC) & OURS • October 2024 - Present</p>
+							<p>Maintaining and enhancing internal applications to streamline university operations.
+								Managing website development and creating new pages.</p>
+						</div>
+						<div class="experience-item">
+							<h3>Web Developer</h3>
+							<p class="company">BUILD UMass • Sept 2024 - May 2025</p>
+							<p>Developing web applications and platforms that support student organizations and
+								nonprofits.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="section-card">
+					<div class="section-icon">👑</div>
+					<h2 class="section-title">Leadership</h2>
+					<div class="section-content">
+						<div class="leadership-item">
+							<h3>President</h3>
+							<p class="organization">Taiwanese and Chinese Students' Association • May 2025 - Present</p>
+							<p>Leading a tight-knit executive board of 15 members, managing planning and execution of
+								events throughout the year. Successfully organized events with over 500 attendees and
+								guest artist performances.</p>
+							<br>
+							<h3>Events Coordinator</h3>
+							<p class="organization">May 2024 - May 2025</p>
+							<p></p>
+							<br>
+							<h3>Freshman Representative</h3>
+							<p class="organization">Sept 2023 - May 2024</p>
+							<p></p>
+						</div>
+					</div>
+				</div>
+
+				<div class="section-card">
+					<div class="section-icon">🏊‍♂️</div>
+					<h2 class="section-title">Athletics</h2>
+					<div class="section-content">
+						<div class="athletics-item">
+							<h3>Competitive Swimmer</h3>
+							<p class="team">UMass Club Swim Team • 2022 - Present</p>
+							<p>Represented the team at a national level for two consecutive years at College Club
+								Swimming Nationals. Achieved 33rd place in 50 Breaststroke in 2024.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="section-card">
+					<div class="section-icon">🎯</div>
+					<h2 class="section-title">Skills & Interests</h2>
+					<div class="section-content">
+						<div class="skills-grid">
+							<div class="skill-category">
+								<h4>Technical</h4>
+								<ul>
+									<li>Full-stack Development</li>
+									<li>Embedded Programming</li>
+									<li>Multi-agent Systems</li>
+									<li>Rust & C Programming</li>
+								</ul>
+							</div>
+							<div class="skill-category">
+								<h4>Leadership</h4>
+								<ul>
+									<li>Team Management</li>
+									<li>Event Planning</li>
+									<li>Project Strategy</li>
+									<li>Cross-functional Collaboration</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
 		</div>
-
-
 	</main>
 
 	<footer>
-		<p>&copy; 2025 Copyright - Ian Mei</p>
+		<p>&copy; 2026 Copyright - Ian Mei</p>
 	</footer>
 
-	<script src="scripts\typewriter.js"></script>
-	<script src="scripts\particles.js"></script>
+	<script></script>
 
 </body>
 

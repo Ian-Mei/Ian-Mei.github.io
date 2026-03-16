@@ -1,7 +1,35 @@
-* {
+/* ============================================================
+   Ian Mei Portfolio — Redesign
+   Style: Dark Glassmorphism + Warm Gradient Accents
+   ============================================================ */
+
+/* ---------- 1. RESET & VARIABLES ---------- */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+:root {
+    --bg:           #030303;
+    --bg2:          #0a0a0a;
+    --surface:      rgba(255,255,255,0.04);
+    --surface-md:   rgba(255,255,255,0.07);
+    --surface-hi:   rgba(255,255,255,0.10);
+    --border:       rgba(255,255,255,0.08);
+    --border-hi:    rgba(255,255,255,0.16);
+    --text:         #f0f0f0;
+    --text-dim:     rgba(240,240,240,0.55);
+    --text-muted:   rgba(240,240,240,0.30);
+    --red:          #f64f59;
+    --orange:       #e1940f;
+    --yellow:       #e4e12a;
+    --gradient:     linear-gradient(90deg, #f64f59, #e1940f, #e4e12a);
+    --nav-h:        68px;
+    --r:            14px;
+    --r-sm:         8px;
+    --t:            0.25s ease;
+    --blur:         backdrop-filter: blur(16px);
 }
 
 body {
