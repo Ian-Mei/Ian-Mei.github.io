@@ -1,7 +1,7 @@
 const ContactSection = () => {
     return (
-        <section id="contact" className="relative z-20 px-6 py-24">
-            <div className="max-w-5xl mx-auto text-center">
+        <section id="contact" className="relative z-20 min-h-screen px-6 py-24 flex items-center">
+            <div className="max-w-5xl mx-auto w-full text-center">
                 <h2 className="text-3xl md:text-5xl font-light mb-4 bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent">
                     Get In Touch
                 </h2>
@@ -54,7 +54,7 @@ const ContactSection = () => {
                         <p className="text-sm text-gray-400">ianmmei246@gmail.com</p>
                     </a>
                     <a
-                        href="/images/Ian%20Mei%20Resume.pdf"
+                        href="/images/Ian_Mei_Resume.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="rounded-2xl p-5 backdrop-blur-md bg-white/5 border border-white/10 hover:border-orange-400/40 transition-colors"

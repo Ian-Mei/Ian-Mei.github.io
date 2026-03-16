@@ -172,7 +172,7 @@ const TimelineSection = () => {
     ];
 
     return (
-        <section id="timeline" className="relative z-20 py-24 px-6 md:px-10 lg:px-12">
+        <section id="timeline" className="relative z-20 min-h-screen py-24 px-6 md:px-10 lg:px-12 flex items-center">
             {/* 3D car — z-index flips via canvasWrapperRef when car crosses Z=0 */}
             <div
                 ref={canvasWrapperRef}
@@ -270,7 +270,7 @@ const TimelineSection = () => {
                 />
             </div>
 
-            <div className="relative mx-auto max-w-6xl">
+            <div className="relative mx-auto w-full max-w-6xl">
                 <motion.header
                     initial={{ opacity: 0, y: -24 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -279,7 +279,7 @@ const TimelineSection = () => {
                     className="mb-16 text-center"
                 >
                     <p className="mb-3 text-xs tracking-[0.3em] uppercase text-orange-300">Experience Timeline</p>
-                    <h2 className="mb-4 text-3xl md:text-5xl font-semibold bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent">
+                    <h2 className="mb-4 pb-1 text-3xl md:text-5xl font-semibold leading-[1.15] bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent">
                         My Journey So Far
                     </h2>
                     <p className="mx-auto max-w-2xl text-zinc-400 text-sm md:text-base">

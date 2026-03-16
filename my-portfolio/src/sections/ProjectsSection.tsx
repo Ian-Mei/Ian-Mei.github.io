@@ -71,8 +71,8 @@ const projects: Project[] = [
 
 const ProjectsSection = () => {
     return (
-        <section id="projects" className="relative z-20 px-6 py-24">
-            <div className="max-w-7xl mx-auto">
+        <section id="projects" className="relative z-20 min-h-screen px-6 py-24 flex items-center">
+            <div className="max-w-7xl mx-auto w-full">
                 <h2 className="text-3xl md:text-5xl font-light mb-4 bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent text-center">
                     Projects
                 </h2>
