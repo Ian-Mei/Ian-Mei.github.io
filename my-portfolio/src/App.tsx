@@ -5,7 +5,7 @@ import ContactSection from './sections/ContactSection.tsx';
 import HomeSection from './sections/HomeSection.tsx';
 import ProjectsSection from './sections/ProjectsSection.tsx';
 import TimelineSection from './sections/TimelineSection.tsx';
-import type { Project } from './types.ts';
+import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation';
 
 const App = () => {
     const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number }>>([]);
@@ -13,58 +13,6 @@ const App = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     const roles = ['a student', 'an athlete', 'a full-stack developer', 'a hard worker'];
-
-    const projects: Project[] = [
-        {
-            title: 'UMass Dining Wrapped',
-            image: '/images/UMassDiningWrapped.jpg',
-            links: [{ label: 'Repo', href: 'https://github.com/Ian-Mei/UMass-Dining-Wrapped' }],
-        },
-        {
-            title: 'LockIn - UMass Hackathon 2023',
-            image: '/images/LockIn.jpg',
-            links: [
-                { label: 'About', href: 'https://github.com/D-SehKim/LockIn/blob/main/README.md' },
-                { label: 'Repo', href: 'https://github.com/D-SehKim/LockIn' },
-            ],
-        },
-        {
-            title: 'Audio Visualizer',
-            image: '/images/AudioVis.png',
-            links: [
-                { label: 'Demo', href: '/audiovis.html' },
-                { label: 'Repo', href: 'https://github.com/Ian-Mei/Audio-Visualizer' },
-            ],
-        },
-        {
-            title: 'Digit Recognizer',
-            image: '/images/9.png',
-            links: [{ label: 'Repo', href: 'https://github.com/Ian-Mei/Digit-Recognizer' }],
-        },
-        {
-            title: 'UMass BITES - UMass Hackathon 2024',
-            image: '/images/bites.png',
-            links: [
-                { label: 'Devpost', href: 'https://devpost.com/software/umass-bites' },
-                { label: 'Repo', href: 'https://github.com/Ian-Mei/UMass-BITES' },
-            ],
-        },
-        {
-            title: 'Duckpond - UMass CS320 Software Engineering Project',
-            image: '/images/DP_Logo_White.png',
-            links: [{ label: 'Repo', href: 'https://github.com/AryanJoshi-03/DuckPond' }],
-        },
-        {
-            title: 'Tokenless - UMass Hackathon 2025',
-            image: '/images/tokenless.png',
-            links: [{ label: 'Devpost', href: 'https://devpost.com/software/tokenless' }],
-        },
-        {
-            title: 'More Coming Soon!',
-            image: '/images/ComingSoon.jpg',
-            links: [],
-        },
-    ];
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -168,7 +116,7 @@ const App = () => {
             <HomeSection currentRoleIndex={currentRoleIndex} roles={roles} />
             <TimelineSection />
             <AboutSection />
-            <ProjectsSection projects={projects} />
+            <ProjectsSection />
             <ContactSection />
 
             <div className="fixed bottom-8 right-8 z-50 flex flex-col space-y-4">
@@ -214,11 +162,12 @@ const App = () => {
                 </motion.a>
             </div>
 
-            <div className="absolute inset-0 pointer-events-none z-0" aria-hidden="true">
-                <div className="absolute inset-0 bg-[radial-gradient(72rem_48rem_at_-8%_-6%,rgba(251,146,60,0.22),transparent_62%),radial-gradient(56rem_40rem_at_84%_72%,rgba(239,68,68,0.14),transparent_66%),linear-gradient(180deg,rgba(255,255,255,0.01),rgba(0,0,0,0.22))]" />
-                <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-orange-500/5 blur-3xl" />
-                <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-red-500/5 blur-3xl" />
-            </div>
+            <BackgroundGradientAnimation
+                interactive={false}
+                size="72%"
+                className="pointer-events-none"
+                containerClassName="fixed inset-0 z-0 opacity-50"
+            />
 
             <footer className="relative z-20 py-10 text-center text-gray-500 text-sm">&copy; 2026 Ian Mei</footer>
         </div>

@@ -155,6 +155,14 @@ const TimelineSection = () => {
         },
         {
             id: '6',
+            title: 'Freshman Rep - TCSA',
+            period: 'SEP 2023 - MAY 2024',
+            description:
+                'Expanded outreach to first-year students and organized inclusive events to build community across campus.',
+            icon: <Briefcase className="h-5 w-5" aria-hidden="true" />,
+        },
+        {
+            id: '7',
             title: 'UMass Amherst - B.S. Computer Science',
             period: 'SEP 2023 - PRESENT',
             description:
@@ -170,12 +178,13 @@ const TimelineSection = () => {
                 ref={canvasWrapperRef}
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 hidden md:block"
-                style={{ zIndex: 30, overflow: 'hidden' }}
+                style={{ zIndex: 30, overflow: 'visible' }}
             >
                 <Canvas
-                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'block' }}
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'block', background: 'transparent' }}
                     camera={{ position: [0, 1.5, 9.5], fov: 58 }}
                     dpr={[1, 1.5]}
+                    gl={{ alpha: true, antialias: true }}
                 >
                     <ambientLight intensity={0.6} color="#ffedd5" />
                     <directionalLight intensity={1.8} position={[5, 8, 3]} color="#fb923c" castShadow />
@@ -193,11 +202,18 @@ const TimelineSection = () => {
                     top: 0, left: 0, right: 0, bottom: 0,
                     pointerEvents: 'none',
                     zIndex: -1,
-                    overflow: 'hidden',
+                    overflow: 'visible',
                 }}
                 className="hidden md:block"
             >
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.32))' }} />
+                <div
+                    style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background:
+                            'linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.12) 52%, rgba(0,0,0,0))',
+                    }}
+                />
                 {/* preserve-3d removed — children use individual transformTemplate; preserve-3d on parent */}
                 {/* creates a 3D compositing context that escapes CSS z-index and fights the WebGL canvas */}
                 <div style={{ position: 'absolute', inset: 0, perspective: '1600px' }}>
