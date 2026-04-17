@@ -15,6 +15,11 @@ const AboutSection = () => {
                         <h3 className="text-xl font-semibold mb-4">Professional Experience</h3>
                         <ul className="space-y-4 text-gray-300">
                             <li>
+                                <p className="text-white font-medium">Incoming Software Developer Intern</p>
+                                <p className="text-sm text-orange-300">IBM - Summer 2026</p>
+                                <p className="text-sm mt-1">Incoming SDE Intern at IBM in San Jose for Summer 2026.</p>
+                            </li>
+                            <li>
                                 <p className="text-white font-medium">Software Engineering Intern</p>
                                 <p className="text-sm text-orange-300">North Atlantic Industries - Summer 2025</p>
                                 <p className="text-sm mt-1">Translated C code to Rust, improving memory safety and code quality.</p>
@@ -47,7 +52,11 @@ const AboutSection = () => {
                             <li>
                                 <p className="text-white font-medium">UMass Club Swim Team</p>
                                 <p className="text-sm text-orange-300">2022 to Present</p>
-                                <p className="text-sm mt-1">2x Nationals qualifier, placed 33rd in 50 Breaststroke (2024).</p>
+                                <p className="text-sm mt-1">3x Nationals qualifier, placed 33rd in 50 Breaststroke (2024).</p>
+                            </li>
+                            <li>
+                                <p className="text-white font-medium">Freshman Representitive, TCSA</p>
+                                <p className="text-sm text-orange-300">May 2023 to May 2024</p>
                             </li>
                         </ul>
                     </div>

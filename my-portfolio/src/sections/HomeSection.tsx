@@ -15,7 +15,7 @@ const HomeSection = ({ roles, currentRoleIndex }: HomeSectionProps) => {
                     transition={{ duration: 0.8, ease: 'easeOut' }}
                     className="mb-8"
                 >
-                    <div className="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-orange-500/30 shadow-[0_0_40px_rgba(251,146,60,0.3)]">
+                    <div className="w-44 h-44 mx-auto rounded-full overflow-hidden border-4 border-orange-500/30 shadow-[0_0_40px_rgba(251,146,60,0.3)]">
                         <img src="/images/Ian.jpg" alt="Ian Mei" className="w-full h-full object-cover" />
                     </div>
                 </motion.div>

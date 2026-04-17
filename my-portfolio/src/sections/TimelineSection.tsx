@@ -115,6 +115,14 @@ const TimelineSection = () => {
     const events: TimelineEvent[] = [
         {
             id: '1',
+            title: 'Software Developer Intern - IBM',
+            period: 'MAY 2026 - AUGUST 2026',
+            description:
+                'Incoming Software Developer Intern at IBM for Summer 2026, excited to contribute to innovative and meaningful projects!',
+            icon: <Sparkles className="h-5 w-5" aria-hidden="true" />,
+        },
+        {
+            id: '2',
             title: 'President - TCSA',
             period: 'MAY 2025 - PRESENT',
             description:
@@ -122,7 +130,7 @@ const TimelineSection = () => {
             icon: <Sparkles className="h-5 w-5" aria-hidden="true" />,
         },
         {
-            id: '2',
+            id: '3',
             title: 'Software Engineering Intern - North Atlantic Industries',
             period: 'SUMMER 2025',
             description:
@@ -130,7 +138,7 @@ const TimelineSection = () => {
             icon: <Briefcase className="h-5 w-5" aria-hidden="true" />,
         },
         {
-            id: '3',
+            id: '4',
             title: 'Tech Lead - UMass LRC & OURS',
             period: 'OCT 2024 - PRESENT',
             description:
@@ -138,7 +146,7 @@ const TimelineSection = () => {
             icon: <Award className="h-5 w-5" aria-hidden="true" />,
         },
         {
-            id: '4',
+            id: '5',
             title: 'Web Developer - BUILD UMass',
             period: 'SEP 2024 - MAY 2025',
             description:
@@ -146,7 +154,7 @@ const TimelineSection = () => {
             icon: <Rocket className="h-5 w-5" aria-hidden="true" />,
         },
         {
-            id: '5',
+            id: '6',
             title: 'Events Coordinator - TCSA',
             period: 'MAY 2024 - MAY 2025',
             description:
@@ -154,7 +162,7 @@ const TimelineSection = () => {
             icon: <Briefcase className="h-5 w-5" aria-hidden="true" />,
         },
         {
-            id: '6',
+            id: '7',
             title: 'Freshman Rep - TCSA',
             period: 'SEP 2023 - MAY 2024',
             description:
@@ -162,7 +170,7 @@ const TimelineSection = () => {
             icon: <Briefcase className="h-5 w-5" aria-hidden="true" />,
         },
         {
-            id: '7',
+            id: '8',
             title: 'UMass Amherst - B.S. Computer Science',
             period: 'SEP 2023 - PRESENT',
             description:

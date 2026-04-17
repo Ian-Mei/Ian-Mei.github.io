@@ -164,9 +164,9 @@ const App = () => {
 
             <BackgroundGradientAnimation
                 interactive={false}
-                size="72%"
+                size="78%"
                 className="pointer-events-none"
-                containerClassName="fixed inset-0 z-0 opacity-50"
+                containerClassName="fixed inset-0 z-0 opacity-41"
             />
 
             <footer className="relative z-20 py-10 text-center text-gray-500 text-sm">&copy; 2026 Ian Mei</footer>

@@ -139,35 +139,35 @@ export const BackgroundGradientAnimation = ({
                     className={cn(
                         "absolute [background:radial-gradient(circle_at_center,_rgba(var(--first-color),_0.26)_0,_rgba(var(--first-color),_0)_55%)_no-repeat]",
                         "[mix-blend-mode:var(--blending-value)] left-[calc(50%-var(--size)/2)] top-[calc(50%-var(--size)/2)] h-[var(--size)] w-[var(--size)]",
-                        "[transform-origin:center_center] animate-first opacity-35"
+                        "[transform-origin:center_center] animate-first opacity-50"
                     )}
                 />
                 <div
                     className={cn(
                         "absolute [background:radial-gradient(circle_at_center,_rgba(var(--second-color),_0.22)_0,_rgba(var(--second-color),_0)_55%)_no-repeat]",
                         "[mix-blend-mode:var(--blending-value)] left-[calc(50%-var(--size)/2)] top-[calc(50%-var(--size)/2)] h-[var(--size)] w-[var(--size)]",
-                        "[transform-origin:calc(50%-420px)] animate-second opacity-30"
+                        "[transform-origin:calc(50%-520px)] animate-second opacity-42"
                     )}
                 />
                 <div
                     className={cn(
                         "absolute [background:radial-gradient(circle_at_center,_rgba(var(--third-color),_0.2)_0,_rgba(var(--third-color),_0)_55%)_no-repeat]",
                         "[mix-blend-mode:var(--blending-value)] left-[calc(50%-var(--size)/2)] top-[calc(50%-var(--size)/2)] h-[var(--size)] w-[var(--size)]",
-                        "[transform-origin:calc(50%+420px)] animate-third opacity-28"
+                        "[transform-origin:calc(50%+520px)] animate-third opacity-38"
                     )}
                 />
                 <div
                     className={cn(
                         "absolute [background:radial-gradient(circle_at_center,_rgba(var(--fourth-color),_0.18)_0,_rgba(var(--fourth-color),_0)_55%)_no-repeat]",
                         "[mix-blend-mode:var(--blending-value)] left-[calc(50%-var(--size)/2)] top-[calc(50%-var(--size)/2)] h-[var(--size)] w-[var(--size)]",
-                        "[transform-origin:calc(50%-220px)] animate-fourth opacity-22"
+                        "[transform-origin:calc(50%-300px)] animate-fourth opacity-32"
                     )}
                 />
                 <div
                     className={cn(
                         "absolute [background:radial-gradient(circle_at_center,_rgba(var(--fifth-color),_0.18)_0,_rgba(var(--fifth-color),_0)_55%)_no-repeat]",
                         "[mix-blend-mode:var(--blending-value)] left-[calc(50%-var(--size)/2)] top-[calc(50%-var(--size)/2)] h-[var(--size)] w-[var(--size)]",
-                        "[transform-origin:calc(50%-800px)_calc(50%+800px)] animate-fifth opacity-20"
+                        "[transform-origin:calc(50%-1000px)_calc(50%+1000px)] animate-fifth opacity-30"
                     )}
                 />
 
