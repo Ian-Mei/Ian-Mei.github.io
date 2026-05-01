@@ -16,7 +16,7 @@ interface GlassBlogCardProps {
     date?: string;
     readTime?: string;
     tags?: string[];
-    links?: Array<{ label: string; href: string }>;
+    links?: Array<{ label: string; href: string; onClick?: () => void }>;
     className?: string;
     onLinkClick?: (href: string) => void;
 }
@@ -83,9 +83,9 @@ export function GlassBlogCard({
                         {primaryLink ? (
                             <motion.a
                                 href={primaryLink.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={() => onLinkClick?.(primaryLink.href)}
+                                target={primaryLink.onClick ? undefined : '_blank'}
+                                rel={primaryLink.onClick ? undefined : 'noopener noreferrer'}
+                                onClick={primaryLink.onClick ? (e) => { e.preventDefault(); primaryLink.onClick!(); } : () => onLinkClick?.(primaryLink.href)}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="flex items-center gap-2 rounded-full bg-orange-500 px-6 py-2.5 text-sm font-medium text-white shadow-lg shadow-orange-500/25 hover:bg-orange-600"
@@ -137,9 +137,9 @@ export function GlassBlogCard({
                                 <motion.a
                                     key={`${title}-${link.label}`}
                                     href={link.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={() => onLinkClick?.(link.href)}
+                                    target={link.onClick ? undefined : '_blank'}
+                                    rel={link.onClick ? undefined : 'noopener noreferrer'}
+                                    onClick={link.onClick ? (e) => { e.preventDefault(); link.onClick!(); } : () => onLinkClick?.(link.href)}
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.9 }}
                                     title={link.label}

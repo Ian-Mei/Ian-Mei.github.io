@@ -1,6 +1,7 @@
 export type ProjectLink = {
     label: string;
     href: string;
+    onClick?: () => void;
 };
 
 export type Project = {
