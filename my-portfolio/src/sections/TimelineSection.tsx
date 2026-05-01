@@ -1,8 +1,6 @@
-import { Canvas } from '@react-three/fiber';
-import { motion, useInView, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { Award, Briefcase, GraduationCap, Rocket, Sparkles } from 'lucide-react';
-import { Suspense, useCallback, useRef, useState } from 'react';
-import VehicleModel from '../components/VehicleModel';
+import { useRef } from 'react';
 
 type TimelineEvent = {
     id: string;
@@ -73,25 +71,12 @@ const TimelineItem = ({ event, index }: TimelineItemProps) => {
 
 const TimelineSection = () => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const canvasWrapperRef = useRef<HTMLDivElement>(null);
     const shouldReduceMotion = useReducedMotion();
     const motionFactor = shouldReduceMotion ? 0.4 : 1;
-    const [scrollProgress, setScrollProgress] = useState(0);
-
-    // Flip canvas z-index when car crosses Z=0 — no re-render, direct DOM write.
-    const handleFrontChange = useCallback((inFront: boolean) => {
-        if (canvasWrapperRef.current) {
-            canvasWrapperRef.current.style.zIndex = inFront ? '30' : '-1';
-        }
-    }, []);
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ['start end', 'end start'],
-    });
-
-    useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-        setScrollProgress(latest);
     });
 
     const lineHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
@@ -181,27 +166,6 @@ const TimelineSection = () => {
 
     return (
         <section id="timeline" className="relative z-20 min-h-screen py-24 px-6 md:px-10 lg:px-12 flex items-center">
-            {/* 3D car — z-index flips via canvasWrapperRef when car crosses Z=0 */}
-            <div
-                ref={canvasWrapperRef}
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 hidden md:block"
-                style={{ zIndex: 30, overflow: 'visible' }}
-            >
-                <Canvas
-                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'block', background: 'transparent' }}
-                    camera={{ position: [0, 1.5, 9.5], fov: 58 }}
-                    dpr={[1, 1.5]}
-                    gl={{ alpha: true, antialias: true }}
-                >
-                    <ambientLight intensity={0.6} color="#ffedd5" />
-                    <directionalLight intensity={1.8} position={[5, 8, 3]} color="#fb923c" castShadow />
-                    <directionalLight intensity={0.5} position={[-4, 2, -2]} color="#67e8f9" />
-                    <Suspense fallback={null}>
-                        <VehicleModel scrollProgress={scrollProgress} motionFactor={motionFactor} onFrontChange={handleFrontChange} />
-                    </Suspense>
-                </Canvas>
-            </div>
             {/* Decorative background elements — behind timeline cards */}
             <div
                 aria-hidden="true"
