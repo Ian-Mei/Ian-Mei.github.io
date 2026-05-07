@@ -13,7 +13,7 @@ function onTouch() {
 }
 
 function preload() {
-  img = loadImage('../images/TCSA.png')
+  img = loadImage('/images/TCSA.png')
 }
 
 function setup() {
